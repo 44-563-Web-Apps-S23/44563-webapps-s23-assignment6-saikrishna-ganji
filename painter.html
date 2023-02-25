@@ -2,44 +2,45 @@
 <html>
  
 <body>
-    <head><title>painters page</title></head>
-    <h2>Painter entry Sai Krishna Ganji</h2>
+    <title>painters page</title>
+    <h2>Painter entry Saikrishna Ganji</h2>
 
 <h2>Getting input</h2>
 
 <form>
-    <label for="form1_pwd">The hidden painter name</label>
-    <input type ="password" id="form1_pwd" name="form1_pwd"  value="Monet"> <br>
+    <label for="form2_painter">The hidden painter name</label>
+    <input type="password" id="form2_painter" name="form2_painter" value="Monet"><br>
 
-    <label for="form1_gp">Guess the painter</label>
-    <input type ="text" id="form1_gp" name="form1_gp" autofocus> <br>
+
+    <label for="form2_guess">Guess the painter</label>
+    <input type="text" id="form2_guess" name="form2_guess"><br>
 
     <input type="button" onclick="checkPainter()" value="Check the guess">
-
 </form>
-<p id="result">count will display here </p>
-<script> 
-good=0
-oops=0
-function checkPainter() {
-    console.log("Getting form values")
-    painter = document.getElementById("form1_pwd").value
-    guess = document.getElementById("form1_gp").value
-    
-    
-    out = document.getElementById("result")
-    if(painter == guess){
-        good++
-        out.innerHTML = good
-        alert("You got it right")
-        
-    } else {
-        oops++
-        out.innerHTML = oops
-        alert("sorry")
-       
+
+<p id="results"></p>
+
+
+<script>
+    var good = 0;
+    var oops = 0;
+    function checkPainter() {
+        painter = document.getElementById("form2_painter").value
+        guess = document.getElementById("form2_guess").value
+
+        result = document.getElementById("results")
+        if (painter == guess) {
+            good += 1
+            alert("You got it right");
+
+        } else {
+            oops += 1
+            alert("Sorry");
+        }
+
+        document.getElementById("results").innerHTML = "good count : " + good + " <br> oops count : " + oops
+
     }
-}
 </script>
 
 </body>
