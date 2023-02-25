@@ -8,27 +8,27 @@
 <h2>Getting input</h2>
 
 <form>
-    <label for="form2_painter">The hidden painter name</label>
-    <input type="password" id="form2_painter" name="form2_painter" value="Monet"><br>
+    <label for="form222_painter">The hidden painter name</label>
+    <input type="password" id="form222_painter" name="form222_painter" value="Monet"><br>
 
 
-    <label for="form2_guess">Guess the painter</label>
-    <input type="text" id="form2_guess" name="form2_guess"><br>
+    <label for="form244_guess">Guess the painter</label>
+    <input type="text" id="form244_guess" name="form244_guess"><br>
 
     <input type="button" onclick="checkPainter()" value="Check the guess">
 </form>
 
-<p id="results"></p>
+<p id="outcome"></p>
 
 
 <script>
     var good = 0;
     var oops = 0;
     function checkPainter() {
-        painter = document.getElementById("form2_painter").value
-        guess = document.getElementById("form2_guess").value
+        painter = document.getElementById("form222_painter").value
+        guess = document.getElementById("form244_guess").value
 
-        result = document.getElementById("results")
+        outcome = document.getElementById("outcome")
         if (painter == guess) {
             good += 1
             alert("You got it right");
@@ -38,7 +38,7 @@
             alert("Sorry");
         }
 
-        document.getElementById("results").innerHTML = "good counts : " + good + " <br> oops counts : " + oops
+        document.getElementById("outcome").innerHTML = "good counts : " + good + " <br> oops counts : " + oops
 
     }
 </script>
