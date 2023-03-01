@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Currency Conversion Page</title>
+    </head>
+    <body>
+        <h2>
+            Saikrishna Ganji shows currency conversions
+        </h2>
+
+        <form>
+            <label for="form_base">Enter base amount</label>
+            <input type="number" id="form_base" name="form_base" value="50"><br>
+    
+            <label for="form_conversion">Enter the conversion rate</label>
+            <input type="number" id="form_conversion" name="form_conversion" value="35"><br>
+    
+            <input type="button" onclick="convert()" value="Show conversions">
+        </form>
+    
+        <p id="result">The result will be displayed.</p>
+    
+        <form>
+            <input type="radio" id="average" name="calculations" onclick="chooseOp()" value="mean" checked>
+            <label for="average">Average</label><br>
+    
+            <input type="radio" id="max" name="calculations" onclick="chooseOp()" value="maximum">
+            <label for="max">Max</label><br>
+    
+            <input type="radio" id="min" name="calculations" onclick="chooseOp()" value="minimum">
+            <label for="min">Min</label><br>
+        </form>
+    
+        <p id="result2">The result will be displayed.</p>
+    
+        <script> 
+            function convert() {
+                let base = parseInt(document.getElementById("form_base").value);
+                let conversion = parseInt(document.getElementById("form_conversion").value);
+                let toShow = "";
+                
+                for(let i = 0; i < 5; i++) {
+                    let converted = base * conversion;
+                    toShow += `${base} is ${converted}; `;
+                    base *= 2;
+                }
+    
+                document.getElementById("result").innerHTML = "Conversions are: " + toShow;
+            }
+    
+            function chooseOp() {
+                let results = 0;
+                let base = parseInt(document.getElementById("form_base").value);
+                let conversion = parseInt(document.getElementById("form_conversion").value);
+                let average = document.getElementById("average").checked;
+                let max = document.getElementById("max").checked;
+                let min = document.getElementById("min").checked;
+    
+                if (average) {
+                    results = (base + conversion) / 2;
+                } else if (max) {
+                    results = Math.max(base, conversion);
+                } else if (min) {
+                    results = Math.min(base, conversion);
+                }
+    
+                document.getElementById("result2").innerHTML = results;
+            }
+        </script>
+    </body>
+    
+</html>
