@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Guess the Number</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<h1 class="my-4">Guess the Number</h1>
+		<p class="lead">I'm thinking of a number between 1 and 100. You have 10 guesses.</p>
+		<div class="form-group">
+			<label for="guess">Your guess:</label>
+			<input type="number" id="guess" class="form-control">
+		</div>
+		<button id="guess-btn" class="btn btn-primary">Guess</button>
+		<p id="result" class="mt-3"></p>
+	</div>
+	<script>
+		let answer = Math.floor(Math.random() * 100) + 1;
+		let guesses = 10;
+
+		document.getElementById("guess-btn").onclick = function() {
+			let guess = parseInt(document.getElementById("guess").value);
+
+			if (isNaN(guess) || guess < 1 || guess > 100) {
+				document.getElementById("result").innerHTML = "Please enter a number between 1 and 100.";
+			}
+			else if (guess === answer) {
+				document.getElementById("result").innerHTML = "Congratulations! You guessed the number!";
+			}
+			else {
+				guesses--;
+				if (guesses === 0) {
+					document.getElementById("guess-btn").onclick = function() {
+						alert("Sorry, ran out of guesses.");
+					}
+				}
+				else {
+					let message = "Incorrect. You have " + guesses + " guesses left.";
+					if (guess > answer) {
+						message += " Try guessing lower.";
+					}
+					else {
+						message += " Try guessing higher.";
+					}
+					document.getElementById("result").innerHTML = message;
+				}
+			}
+		}
+	</script>
+</body>
+</html>

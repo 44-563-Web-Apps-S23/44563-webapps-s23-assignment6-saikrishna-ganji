@@ -1,73 +1,79 @@
 <!DOCTYPE html>
 <html>
- 
+
 <body>
     <title>painters page</title>
     <h2>Painter entry Saikrishna Ganji</h2>
 
-<h2>Getting input</h2>
+    <h2>Getting input</h2>
 
-<form>
-    <label for="form222_painter">The hidden painter name</label>
-    <input type="password" id="form222_painter" name="form222_painter" value="Monet"><br>
-
-
-    <label for="form244_guess">Guess the painter</label>
-    <input type="text" id="form244_guess" name="form244_guess"><br>
-
-    <input type="button" onclick="checkPainter()" value="Check the guess">
-</form>
-
-<p id="outcome"></p>
+    <form>
+        <label for="form222_painter">The hidden painter name</label>
+        <input type="password" id="form222_painter" name="form222_painter" value="Monet"><br>
 
 
-<script>
-    var good = 0;
-    var oops = 0;
-    function checkPainter() {
-        painter = document.getElementById("form222_painter").value
-        guess = document.getElementById("form244_guess").value
+        <label for="form244_guess">Guess the painter</label>
+        <input type="text" id="form244_guess" name="form244_guess"><br>
 
-        outcome = document.getElementById("outcome")
-        if (painter == guess) {
-            good += 1
-            alert("You got it right");
+        <input type="button" onclick="checkPainter()" value="Check the guess">
+    </form>
 
-        } else {
-            oops += 1
-            alert("Sorry");
+    <p id="outcome"></p>
+
+
+    <script>
+        var good = 0;
+        var oops = 0;
+        function checkPainter() {
+            painter = document.getElementById("form222_painter").value
+            guess = document.getElementById("form244_guess").value
+
+            outcome = document.getElementById("outcome")
+            if (painter == guess) {
+                good += 1
+                alert("You got it right");
+
+            } else if (oops >= 10) {
+                document.getElementById("btn").onclick = giveAlert();
+            }
+             else {
+                oops += 1
+                alert("Sorry");
+            }
+
+            document.getElementById("outcome").innerHTML = "good counts : " + good + " <br> oops counts : " + oops
+
         }
+    </script>
 
-        document.getElementById("outcome").innerHTML = "good counts : " + good + " <br> oops counts : " + oops
-
-    }
-</script>
-
-<div class="container">
-    <img src="gaura.jpg" id="images" width="100" height="100" onclick="selectImage()">
-</div>
-<script>
-    var useImage = 1
-    var img = document.getElementById("images")
-    function selectImage() {
-        switch(useImage) {
-            case 1:
-                img.src = "gaura.jpg"
-                useImage++
-                break
-            case 2:
-                img.src = "sunflower.jpg"
-                useImage++
-                break
-            case 3:
-                img.src = "jasmine.jpg"
-                useImage = 1
-                break
-            default:
+    <div class="container">
+        <img src="gaura.jpg" id="images" width="100" height="100" onclick="selectImage()">
+    </div>
+    <script>
+        var useImage = 1
+        var img = document.getElementById("images")
+        function selectImage() {
+            switch (useImage) {
+                case 1:
+                    img.src = "gaura.jpg"
+                    useImage++
+                    break
+                case 2:
+                    img.src = "sunflower.jpg"
+                    useImage++
+                    break
+                case 3:
+                    img.src = "jasmine.jpg"
+                    useImage = 1
+                    break
+                default:
+            }
         }
-    }
-
-</script>
+        function giveAlert() {
+            alert("Sorry, ran out of guesses.");
+        }
+    </script>
 
 </body>
-</html> 
+
+</html>
